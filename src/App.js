@@ -36,11 +36,17 @@ function App() {
 
   const handleCalculate = () => {
     if (!inputValue) return;
+
     try {
       if (operator) {
         const numbers = inputValue.split(operator);
 
         const leftOperator = Number(numbers[0]);
+        if (isNaN(leftOperator)) {
+          setInputValue(false);
+          setEnabled(false);
+          return;
+        }
 
         const rightOperator = Number(numbers[1]);
 
@@ -60,7 +66,7 @@ function App() {
             result = leftOperator * rightOperator;
             break;
           default:
-            result = "Ведите корруктное значение";
+            result = "Ведите корректное значение";
             break;
         }
         setInputValue(result);
