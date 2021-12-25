@@ -42,14 +42,15 @@ function App() {
         const numbers = inputValue.split(operator);
 
         const leftOperator = Number(numbers[0]);
-        if (isNaN(leftOperator)) {
+
+        let rightOperator = Number(numbers[1]);
+
+        if (isNaN(leftOperator) || isNaN(rightOperator)) {
           setInputValue(false);
           setEnabled(false);
           return;
         }
-
-        const rightOperator = Number(numbers[1]);
-
+        
         let result;
         switch (operator) {
           case "+":
